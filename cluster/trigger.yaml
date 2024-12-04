@@ -6,11 +6,11 @@ metadata:
 spec:
   resource: event
   resourceSelector:
-    name: basic-k6-workflow  # Replace with your k6 workflow name
-  event: created                 # Changed to trigger on creation
-  action: run
-  execution: testworkflow
+    name: basic-k6-workflow  # Name of your k6 workflow
+  event: created                 # Triggers on creation
+  action: run                    # Run the workflow
+  execution: testworkflow        # Execution type
   testSelector:
-    name: basic-k6-workflow  # Replace with your k6 workflow name
+    name: basic-k6-workflow  # Same name as above
     namespace: testkube
   disabled: false
