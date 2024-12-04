@@ -4,13 +4,13 @@ metadata:
   name: k6-workflow-trigger
   namespace: testkube
 spec:
-  resource: testworkflow    # Resource type to watch
-  resourceSelector:         # Select which resources to watch
-    name: basic-k6-workflow
-  event: created          # Trigger on modification
-  action: run              # Action to take
-  execution: testworkflow  # Type of execution
+  resource: event
+  resourceSelector:
+    name: basic-k6-workflow  # Replace with your k6 workflow name
+  event: created                 # Changed to trigger on creation
+  action: run
+  execution: testworkflow
   testSelector:
-    name: basic-k6-workflow   # Name of your testworkflow
+    name: basic-k6-workflow  # Replace with your k6 workflow name
     namespace: testkube
   disabled: false
