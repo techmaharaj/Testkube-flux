@@ -1,15 +1,16 @@
 apiVersion: tests.testkube.io/v1
-kind: Trigger 
+kind: TestTrigger
 metadata:
-  name: workflow-trigger
+  name: k6-workflow-trigger
   namespace: testkube
 spec:
-  resource:
-    name: "basic-k6-workflow"  # Name of your testworkflow
-    type: "testworkflow"        # Type of resource to watch
-  action: "run"                 # Action to take (run the workflow)
-  execution:
-    testworkflow: "basic-k6-workflow"  
-  events:                       # Events that trigger execution
-    - "created"
-    - "modified"
+  resource: testworkflow    # Resource type to watch
+  resourceSelector:         # Select which resources to watch
+    name: basic-k6-workflow
+  event: created          # Trigger on modification
+  action: run              # Action to take
+  execution: testworkflow  # Type of execution
+  testSelector:
+    name: basic-k6-workflow   # Name of your testworkflow
+    namespace: testkube
+  disabled: false
